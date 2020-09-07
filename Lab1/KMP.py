@@ -18,7 +18,7 @@ class KmpMatcher(object):
                 exit()
             #Unique base in pattern
             while(k > 0 and self._pattern[k] != self._pattern[pos]):
-                k = self.prefix[k]
+                k = self._prefix[k]
             #repeat in pattern
             if(self._pattern[k] == self._pattern[pos]):
                 k += 1
@@ -37,11 +37,6 @@ class KmpMatcher(object):
         found = False
 
         for pos in range(0, len(self._string)):
-            #Check valid nt
-            if(self._string[pos] not in self._validChar):
-                print("Error: string contains invalid DNA nucleotides")
-                exit()
-
             #Next character is not a match
             while(match > 0 and self._pattern[match] != self._string[pos]):
                 match = self._prefix[match-1]
@@ -56,11 +51,3 @@ class KmpMatcher(object):
 
         if(found == False):
             print("Sorry '" + self._pattern + "'" + " was not found ")
-
-
-s = "ACTACTACTACTACTACT"
-p = "aa"
-
-matcher = KmpMatcher(p,s)
-matcher.computePrefix()
-#matcher.kmpSearch()

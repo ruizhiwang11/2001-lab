@@ -7,7 +7,7 @@ class BFMatcher(object):
             if(char not in self._validChar):
                 print("Error: pattern contains invalid DNA nucleotides")
                 exit()
-    #An implementation of the Knuth-Morris-Pratt algorithm for linear time string matching
+    #An implementation of the brute force algorithm
     def bfSearch(self):
         found = False
         for pos in range(0, len(self._string)):
@@ -20,15 +20,8 @@ class BFMatcher(object):
                 else:
                     break
                 if p_ptr == len(self._pattern):
+                    found = True
                     print("Match found at position: " + str(pos+1))
-        
-            
-
-content = ""
-with open('./Testing/GCF_000006645.1_ASM664v1_genomic.fna', 'r') as fna:
-    content = fna.read()
-
-testingStr = "ACCCCT"
-matcher = BFMatcher(testingStr , content)
-matcher.bfSearch()
+        if found == False:
+            print("Sorry '" + self._pattern + "'" + " was not found ")
 
