@@ -31,7 +31,6 @@ class BadCharacter(object):
             if p[j] == s[bad_character_pos]:
                 preprocess_result = bad_character_pos - j
 
-        # default is the
         return preprocess_result
 
     def search(self) -> List[int]:
