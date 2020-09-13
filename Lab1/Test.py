@@ -34,7 +34,7 @@ def main():
     print("postion list from Bad Character - ", result)
     toc = time.time()
     bc_time_spent = toc - tic
-    print("bad character spent " + str(bc_time_spent))
+    print("Bad Character spent " + str(bc_time_spent))
 
 
 if __name__ == "__main__":
