@@ -14,25 +14,25 @@ def main():
     """Brute Force"""
     bfmatcher = BFMatcher(testingStr, content)
     tic = time.time()
-    bfmatcher.bfSearch()
+    bf_result = bfmatcher.bfSearch()
     toc = time.time()
+    print("postion list from Brute Force - ", bf_result)
     bf_time_spent = toc - tic
     print("Brute force spent " + str(bf_time_spent))
-
     """KMP"""
     kmpMatcher = KmpMatcher(testingStr, content)
     tic = time.time()
-    kmpMatcher.kmpSearch()
+    kmp_result = kmpMatcher.kmpSearch()
     toc = time.time()
+    print("postion list from KMP - ", kmp_result)
     kmp_time_spent = toc - tic
     print("KMP spent " + str(kmp_time_spent))
-
     """Bad Character"""
     badCharacter = BadCharacter(testingStr, content)
     tic = time.time()
-    result = badCharacter.search()
-    print("postion list from Bad Character - ", result)
+    bc_result = badCharacter.search()
     toc = time.time()
+    print("postion list from Bad Character - ", bc_result)
     bc_time_spent = toc - tic
     print("Bad Character spent " + str(bc_time_spent))
 
