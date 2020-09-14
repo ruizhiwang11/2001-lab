@@ -32,7 +32,7 @@ class KmpMatcher(object):
         match = 0
         found = False
         found_index_list = []
-        while pos <= s_len - p_len:
+        while pos < s_len :
             # Next character is not a match
             while(match > 0 and self._pattern[match] != self._string[pos]):
                 match = self._prefix[match-1]

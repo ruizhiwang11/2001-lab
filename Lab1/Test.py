@@ -9,14 +9,15 @@ def main():
     tic, toc = 0, 0
     with open("./Testing/GCF_000006645.1_ASM664v1_genomic.fna", "r") as fna:
         content = fna.read()
-    testingStr = "ACCCCTCA"
+    testingStr = "TTGGATAC"
 
     """Brute Force"""
     bfmatcher = BFMatcher(testingStr, content)
     tic = time.time()
     bf_result = bfmatcher.bfSearch()
     toc = time.time()
-    print("postion list from Brute Force - ", bf_result)
+    print(" - postion list from Brute Force - ")
+    print(bf_result)
     bf_time_spent = toc - tic
     print("Brute force spent " + str(bf_time_spent))
     """KMP"""
@@ -24,7 +25,8 @@ def main():
     tic = time.time()
     kmp_result = kmpMatcher.kmpSearch()
     toc = time.time()
-    print("postion list from KMP - ", kmp_result)
+    print(" - postion list from KMP - ")
+    print(kmp_result)
     kmp_time_spent = toc - tic
     print("KMP spent " + str(kmp_time_spent))
     """Bad Character"""
@@ -32,7 +34,8 @@ def main():
     tic = time.time()
     bc_result = badCharacter.search()
     toc = time.time()
-    print("postion list from Bad Character - ", bc_result)
+    print(" - postion list from Bad Character - ")
+    print(bc_result)
     bc_time_spent = toc - tic
     print("Bad Character spent " + str(bc_time_spent))
 
