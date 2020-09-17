@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Dict
 
 
 class BadCharacter(object):
@@ -6,48 +6,49 @@ class BadCharacter(object):
         self._pattern = pattern.upper()
         self._search_text = search_text.upper()
 
-    def preprocess(self, process_text: str, bad_character_pos: int) -> int:
-        """preprocessor for determining next move"""
+    def preprocess(self) -> Dict:
+        """Bad Character preprocessing"""
 
-        # getting variables ready
-        s = process_text
-        p = self._pattern
+        # need a dictionary with pattern as key and last occurrence as value
+        bad_chars = {}
+        for i in range(len(self._pattern)):
+            bad_chars[self._pattern[i]] = i
 
-        # if no last occurence of bad character found in text
-        # should slide the pattern  pass the bad character
-        preprocess_result = bad_character_pos + 1
-
-        for j in range(bad_character_pos - 1, -1, -1):
-            # if exist any character same as bad character
-            # return number of pos need to move to align them
-            if p[j] == s[bad_character_pos]:
-                preprocess_result = bad_character_pos - j
-                break
-
-        return preprocess_result
+        return bad_chars
 
     def search(self) -> List[int]:
         """main search func"""
 
         # getting variables ready
-        s = self._search_text
-        p = self._pattern
+        s, p = self._search_text, self._pattern
         p_len, s_len, s_pos = len(p), len(s), 0
         found_index_list = []
+        pattern_chars_dict = self.preprocess()
 
         while s_pos <= s_len - p_len:
             bad_character_pos = -1
-            # checking bad char existence
+            # checking mismatch position
             for i in range(p_len - 1, -1, -1):
                 if s[s_pos + i] != p[i]:
                     bad_character_pos = i
                     break
 
             if bad_character_pos == -1:
-                # append position index to result list
+                # append position index to result list since no mismtach found
                 s_pos += 1
                 found_index_list.append(s_pos)
             else:
-                # apply bad character preprocessing
-                s_pos += self.preprocess(s[s_pos : s_pos + p_len], bad_character_pos)
+                s_pos += (
+                    # the last occurrence position of character in pattern
+                    # that matches the bad charater in search text
+                    i - pattern_chars_dict[s[s_pos + i]]
+                    # this if statement is checking if there exist a bad
+                    # character match in the pattern that is at the left
+                    # of bad character position if no, we set the value to
+                    # be (i + 1) to fail the condition on purpose
+                    if pattern_chars_dict.get(s[s_pos + i], i + 1) < i
+                    # so if above condition check fails, shift the pattern
+                    # pass the bad character
+                    else p_len - i
+                )
         return found_index_list
