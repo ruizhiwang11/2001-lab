@@ -10,11 +10,11 @@ class BadCharacter(object):
         """Bad Character preprocessing"""
 
         # need a dictionary with pattern as key and last occurrence as value
-        bad_chars = {}
+        pattern_chars_dict = {}
         for i in range(len(self._pattern)):
-            bad_chars[self._pattern[i]] = i
+            pattern_chars_dict[self._pattern[i]] = i
 
-        return bad_chars
+        return pattern_chars_dict
 
     def search(self) -> List[int]:
         """main search func"""
