@@ -59,7 +59,7 @@ def Bad_Character(testingStr,content):
 
 """load test string list from auto generation for each test"""
 def load_string_list(content):
-    testingStrlist = testcase.testinglist
+    testingStrlist = testcaseAutoGen.testinglist
     for lens in testingStrlist:
         #print ("\n")
         print ("There are string of "+ str(lens) +" lens tested: ")
@@ -72,6 +72,9 @@ def load_string_list(content):
              print (bf_time_spent,kmp_time_spent,bc_time_spent)
              print ("\n")
     print (json.dumps(resultlist, indent=4))
+    f = open("testResult.txt", "a")
+    f.write(json.dumps(resultlist, indent=4))
+    f.close()
 
 if __name__ == "__main__":
     main()

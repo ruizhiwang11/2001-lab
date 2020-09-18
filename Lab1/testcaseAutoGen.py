@@ -6,8 +6,8 @@ tmpgen={}
 testinglist={}
 
 #Parameter you need to set
-LOWER_BOUND=5
-HIGHER_BOUND=15
+LOWER_BOUND=9
+HIGHER_BOUND=12
 REPEAT_TIME=4
 
 """Single String Generation""" 
