@@ -49,6 +49,6 @@ class BadCharacter(object):
                     if pattern_chars_dict.get(s[s_pos + i], i + 1) < i
                     # so if above condition check fails, shift the pattern
                     # pass the bad character
-                    else p_len - i
+                    else i + 1
                 )
         return found_index_list
