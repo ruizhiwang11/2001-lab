@@ -5,6 +5,12 @@ listGen={}
 tmpgen={}
 testinglist={}
 
+#Parameter you need to set
+LOWER_BOUND=5
+HIGHER_BOUND=15
+REPEAT_TIME=4
+
+"""Single String Generation""" 
 def singStringGen(charlist,lens=int):
     temp=""
     for i in range (0,lens):
@@ -13,6 +19,7 @@ def singStringGen(charlist,lens=int):
     #print (len(temp))
     return temp
 
+"""list of string generation"""
 def testCaseGen(start,end,numb):
     for i in range (start,end+1):
         tmpgen={i:[]}
@@ -25,5 +32,7 @@ def testCaseGen(start,end,numb):
         
     #print (json.dumps(listGen, indent=4))     
     return listGen 
-
-testinglist=testCaseGen(9,13,5)
+   
+    
+"""call for the function"""
+testinglist=testCaseGen(LOWER_BOUND,HIGHER_BOUND,REPEAT_TIME)

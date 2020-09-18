@@ -1,7 +1,7 @@
 from KMP import KmpMatcher
 from BruteForce import BFMatcher
 from BadCharacter import BadCharacter
-import testcase
+import testcaseAutoGen
 import time
 import json
 resultlist={}
@@ -14,7 +14,7 @@ def main():
     tic, toc = 0, 0
     with open("./Testing/GCF_000006645.1_ASM664v1_genomic.fna", "r") as fna:
         content = fna.read()
-    load_list(content)
+    load_string_list(content)
 
 
 
@@ -56,7 +56,9 @@ def Bad_Character(testingStr,content):
     bc_time_spent = toc - tic
     #print("Bad Character spent " + str(bc_time_spent))
 
-def load_list(content):
+
+"""load test string list from auto generation"""
+def load_string_list(content):
     testingStrlist = testcase.testinglist
     for lens in testingStrlist:
         #print ("\n")
