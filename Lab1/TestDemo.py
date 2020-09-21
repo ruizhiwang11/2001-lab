@@ -21,13 +21,13 @@ def main():
                           "(\'\033[1;36mALL\033[0m\' to search in ALL files. \'\033[1;31mEXIT\033[0m\' to exit): ")
         if fileIndex.isdigit():
             if 1 <= int(fileIndex) <= 7:
-                testingStr = input('Please key in the pattern:')  # "ACCCCTCA"
+                testingStr = input('Please key in the pattern: ')  # "ACCCCTCA"
                 runAlgo(int(fileIndex), testingStr)
             else:
                 print("\033[1;31mError input!\033[0m ")
         elif fileIndex.upper() == "ALL":
             # print("RUN ALL")
-            testingStr = input('Please key in the pattern:')
+            testingStr = input('Please key in the pattern: ')
             i = 1
             t = [0.00, 0.00, 0.00]
             while i <= 7:
