@@ -30,11 +30,11 @@ class BadCharacter(object):
             # checking mismatch position
             for i in range(p_len - 1, -1, -1):
                 if(p[i] != s[i+s_pos]):
-                    if s[i+s_pos] in pattern_chars_dict:
+                    if s[i+s_pos] in p[0:i]:
                         bad_character_pos = pattern_chars_dict[s[i+s_pos]]
                         break
                     else:
-                        bad_character_pos = p_len
+                        bad_character_pos = i + 1
                         break
             if bad_character_pos == 0:
                 # append position index to result list since no mismtach found
@@ -45,3 +45,8 @@ class BadCharacter(object):
                 s_pos += bad_character_pos
                 # the shift space is determined by the bad character table
         return found_index_list
+
+# search_string = "actactaaaaattactaaattcaaaatttaaaaaaaattaaaa"
+# pattern = "aa"
+# badCharacter = BadCharacter(pattern,search_string)
+# print(badCharacter.search())
