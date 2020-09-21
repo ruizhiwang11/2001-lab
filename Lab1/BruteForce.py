@@ -21,6 +21,4 @@ class BFMatcher(object):
                     found_index_list.append((pos+1))
             pos += 1
         return found_index_list
-        if found == False:
-            print("Sorry '" + self._pattern + "'" + " was not found ")
 

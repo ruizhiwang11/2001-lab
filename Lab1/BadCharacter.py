@@ -15,7 +15,6 @@ class BadCharacter(object):
             actual_char = self._pattern[i]
             maxshift = max(1,len(self._pattern) - i -1)
             pattern_chars_dict[actual_char] = maxshift
-        print(pattern_chars_dict)
         return pattern_chars_dict
 
     def search(self) -> List[int]:
@@ -44,19 +43,5 @@ class BadCharacter(object):
                 s_pos +=1
             else:
                 s_pos += bad_character_pos
-            #print(s_pos)
-            # else:
-            #     s_pos += (
-            #         # the last occurrence position of character in pattern
-            #         # that matches the bad charater in search text
-            #         i - pattern_chars_dict[s[s_pos + i]]
-            #         # this if statement is checking if there exist a bad
-            #         # character match in the pattern that is at the left
-            #         # of bad character position if no, we set the value to
-            #         # be (i + 1) to fail the condition on purpose
-            #         if pattern_chars_dict.get(s[s_pos + i], i + 1) < i
-            #         # so if above condition check fails, shift the pattern
-            #         # pass the bad character
-            #         else i + 1
-            #     )
+                # the shift space is determined by the bad character table
         return found_index_list

@@ -46,5 +46,3 @@ class KmpMatcher(object):
                 match = self._prefix[match-1]
             pos += 1
         return found_index_list
-        if(found == False):
-            print("Sorry '" + self._pattern + "'" + " was not found ")
