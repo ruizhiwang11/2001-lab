@@ -28,7 +28,7 @@ class BadCharacter(object):
         found_index_list = []
         alphabet='ACGT'
         amap = {alphabet[i]: i for i in range(len(alphabet))}
-        bad_chars_tab = self.preprocessa(amap)
+        bad_chars_tab = self.preprocess(amap)
         while s_pos <= s_len - p_len:
             bad_character_pos = 0
             # checking mismatch position
