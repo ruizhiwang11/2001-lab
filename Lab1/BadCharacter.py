@@ -6,14 +6,20 @@ class BadCharacter(object):
         self._pattern = pattern.upper()
         self._search_text = search_text.upper()
 
-    def preprocess(self) -> Dict:
+    def preprocess(self):
         """Bad Character preprocessing"""
 
         # need a dictionary with pattern as key and last occurrence as value
-        pattern_chars_dict = {}
-        for i in range(len(self._pattern)):
-            pattern_chars_dict[self._pattern[i]] = i
-        return pattern_chars_dict
+        alphabet='ACGT'
+        tab = []
+        amap = {alphabet[i]: i for i in range(len(alphabet))}
+        nxt = [0] * len(amap)
+        for i in range(0, len(self._pattern)):
+            c = self._pattern[i]
+            tab.append(nxt[:])
+            nxt[amap[c]] = i+1
+        return tab
+
 
     def search(self) -> List[int]:
         """main search func"""
@@ -22,18 +28,18 @@ class BadCharacter(object):
         s, p = self._search_text, self._pattern
         p_len, s_len, s_pos = len(p), len(s), 0
         found_index_list = []
-        pattern_chars_dict = self.preprocess()
+        alphabet='ACGT'
+        amap = {alphabet[i]: i for i in range(len(alphabet))}
+        bad_chars_tab = self.preprocess()
         while s_pos <= s_len - p_len:
             bad_character_pos = 0
             # checking mismatch position
             for i in range(p_len - 1, -1, -1):
                 if p[i] != s[i + s_pos]:
-                    if (
-                        s[i + s_pos] in pattern_chars_dict
-                        and i - pattern_chars_dict[s[i + s_pos]] > 0
-                    ):
-                        bad_character_pos = i - pattern_chars_dict[s[i + s_pos]]
-                        break
+                    bad_char = s[i + s_pos]
+                    if bad_char in p:
+                        ci = amap[bad_char]
+                        bad_character_pos = i - (bad_chars_tab[i][ci]-1)
                     else:
                         bad_character_pos = i + 1
                         break
