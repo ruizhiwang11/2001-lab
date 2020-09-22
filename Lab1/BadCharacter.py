@@ -40,6 +40,7 @@ class BadCharacter(object):
                     if bad_char in p:
                         ci = amap[bad_char]
                         bad_character_pos = i - (bad_chars_tab[i][ci]-1)
+                        break
                     else:
                         bad_character_pos = i + 1
                         break
