@@ -6,13 +6,11 @@ class BadCharacter(object):
         self._pattern = pattern.upper()
         self._search_text = search_text.upper()
 
-    def preprocess(self):
+    def preprocess(self, amap):
         """Bad Character preprocessing"""
 
         # need a dictionary with pattern as key and last occurrence as value
-        alphabet='ACGT'
         tab = []
-        amap = {alphabet[i]: i for i in range(len(alphabet))}
         nxt = [0] * len(amap)
         for i in range(0, len(self._pattern)):
             c = self._pattern[i]
@@ -30,7 +28,7 @@ class BadCharacter(object):
         found_index_list = []
         alphabet='ACGT'
         amap = {alphabet[i]: i for i in range(len(alphabet))}
-        bad_chars_tab = self.preprocess()
+        bad_chars_tab = self.preprocessa(amap)
         while s_pos <= s_len - p_len:
             bad_character_pos = 0
             # checking mismatch position
