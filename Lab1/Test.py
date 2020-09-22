@@ -4,7 +4,12 @@ from BadCharacter import BadCharacter
 import testcaseAutoGen
 import time
 import json
-resultlist={}
+resultlist={
+    "Brute_Force": [],
+    "KMP": [],
+    "Boyer-Moore": [],
+    'y':[]
+}
 bf_time_spent=0
 kmp_time_spent=0
 bc_time_spent=0
@@ -68,11 +73,17 @@ def load_string_list(content):
              Brute_Force(string,content)
              KMP(string,content)
              Bad_Character(string,content)
-             resultlist.update({string:[bf_time_spent,kmp_time_spent,bc_time_spent]})
+             resultlist["Brute_Force"].append(round(bf_time_spent,4))
+             resultlist["KMP"].append(round(kmp_time_spent,4))
+             resultlist["Boyer-Moore"].append(round(bc_time_spent,4))
+             resultlist["y"].append(lens)
+
+             #resultlist.update({"Brute_Force":[bf_time_spent],"KMP":[kmp_time_spent],"Bad_Character":[bc_time_spent]})
+             #resultlist.update({string:[bf_time_spent,kmp_time_spent,bc_time_spent]})
              print (bf_time_spent,kmp_time_spent,bc_time_spent)
              print ("\n")
     print (json.dumps(resultlist, indent=4))
-    f = open("testResult.txt", "a")
+    f = open("testResult.json", "a")
     f.write(json.dumps(resultlist, indent=4))
     f.close()
 

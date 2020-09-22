@@ -6,9 +6,9 @@ tmpgen={}
 testinglist={}
 
 #Parameter you need to set
-LOWER_BOUND=9
-HIGHER_BOUND=12
-REPEAT_TIME=4
+LOWER_BOUND=3
+HIGHER_BOUND=30
+REPEAT_TIME=20
 
 """Single String Generation""" 
 def singStringGen(charlist,lens=int):
