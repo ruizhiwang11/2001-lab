@@ -1,14 +1,25 @@
 import random
 import json 
+
 TestingCharlist=['A','C','G','T','U']
 listGen={}
 tmpgen={}
 testinglist={}
 
 #Parameter you need to set
-LOWER_BOUND=3
-HIGHER_BOUND=30
-REPEAT_TIME=20
+LOWER_BOUND=7
+HIGHER_BOUND=10
+REPEAT_TIME=5
+
+def readInPut():
+
+    LOWER_BOUND = input ("Enter LOWER_BOUND :") 
+    HIGHER_BOUND = input ("Enter HIGHER_BOUND :") 
+    REPEAT_TIME = input ("Enter REPEAT_TIME :") 
+    return [LOWER_BOUND,HIGHER_BOUND,REPEAT_TIME]
+
+
+
 
 """Single String Generation""" 
 def singStringGen(charlist,lens=int):
@@ -35,4 +46,5 @@ def testCaseGen(start,end,numb):
    
     
 """call for the function"""
-testinglist=testCaseGen(LOWER_BOUND,HIGHER_BOUND,REPEAT_TIME)
+getinput=readInPut()
+testinglist=testCaseGen(int(getinput[0]),int(getinput[1]),int(getinput[2]))

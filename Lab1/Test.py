@@ -4,6 +4,8 @@ from BadCharacter import BadCharacter
 import testcaseAutoGen
 import time
 import json
+import plotgraph as pg
+
 resultlist={
     "Brute_Force": [],
     "KMP": [],
@@ -20,6 +22,7 @@ def main():
     with open("./Testing/GCF_000006645.1_ASM664v1_genomic.fna", "r") as fna:
         content = fna.read()
     load_string_list(content)
+    pg.plotAGraph()
 
 
 
@@ -34,6 +37,7 @@ def Brute_Force(testingStr,content):
     global bf_time_spent
     bf_time_spent = toc - tic
     #print("Brute force spent " + str(bf_time_spent))
+    
 
 
 """KMP"""
@@ -82,8 +86,9 @@ def load_string_list(content):
              #resultlist.update({string:[bf_time_spent,kmp_time_spent,bc_time_spent]})
              print (bf_time_spent,kmp_time_spent,bc_time_spent)
              print ("\n")
+            
     print (json.dumps(resultlist, indent=4))
-    f = open("testResult.json", "a")
+    f = open("testResult.json", "w")
     f.write(json.dumps(resultlist, indent=4))
     f.close()
 
