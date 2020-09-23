@@ -35,7 +35,7 @@ def main():
                 for index in range(len(t)):
                     t[index] += r[index]
                 i += 1
-            print("\033[1;34mAverage Time Spent:\033[0m")
+            print("\033[1;32mAverage Time Spent:\033[0m")
             print("       Brute Force : ", str(t[0] / 7), "s")
             print("Knuth–Morris–Pratt : ", str(t[1] / 7), "s")
             print("     Bad Character : ", str(t[2] / 7), "s\n")
@@ -77,11 +77,12 @@ def runAlgo(fileIndex, testingStr):
     bc_time_spent = toc - tic
 
     if bf_result == kmp_result == bc_result:
-        print('\033[1;36mThe results match!\033[0m')
-        print("\033[1;34m", len(bf_result), "\033[0mpositions are found!\n\n\033[1;32mTime Spent:\033[0m")
+        print('\033[1;32mThe results match!\033[0m')
+        print("\033[1;34m", len(bf_result), "\033[0mpositions are found!\n\n\033[1;36mTime Spent:\033[0m")
         print("       Brute Force : ", str(bf_time_spent), "s")
         print("Knuth–Morris–Pratt : ", str(kmp_time_spent), "s")
         print("     Bad Character : ", str(bc_time_spent), "s\n")
+        print("\033[1;34m=================================================================================\033[0m\n")
         return [bf_time_spent, kmp_time_spent, bc_time_spent]
     else:
         print('\033[1;31mThe results do not match!\033[0m')
