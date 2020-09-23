@@ -34,6 +34,8 @@ def Brute_Force(testingStr,content):
     toc = time.time()
     #print(" - postion list from Brute Force - ")
     #print(bf_result)
+    print (len(bf_result))
+
     global bf_time_spent
     bf_time_spent = toc - tic
     #print("Brute force spent " + str(bf_time_spent))
@@ -48,6 +50,8 @@ def KMP(testingStr,content):
     toc = time.time()
     #print(" - postion list from KMP - ")
     #print(kmp_result)
+    print (len(kmp_result))
+
     global kmp_time_spent
     kmp_time_spent = toc - tic
     #print("KMP spent " + str(kmp_time_spent))
@@ -61,6 +65,7 @@ def Bad_Character(testingStr,content):
     toc = time.time()
     #print(" - postion list from Bad Character - ")
     #print(bc_result)
+    print (len(bc_result))
     global bc_time_spent
     bc_time_spent = toc - tic
     #print("Bad Character spent " + str(bc_time_spent))
@@ -74,9 +79,11 @@ def load_string_list(content):
         print ("There are string of "+ str(lens) +" lens tested: ")
         #print (testingStrlist[lens])
         for string in testingStrlist[lens]:
+             print (string)
              Brute_Force(string,content)
              KMP(string,content)
              Bad_Character(string,content)
+             
              resultlist["Brute_Force"].append(round(bf_time_spent,4))
              resultlist["KMP"].append(round(kmp_time_spent,4))
              resultlist["Boyer-Moore"].append(round(bc_time_spent,4))

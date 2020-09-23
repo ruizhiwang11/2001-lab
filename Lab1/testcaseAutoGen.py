@@ -1,7 +1,7 @@
 import random
 import json 
 
-TestingCharlist=['A','C','G','T','U']
+TestingCharlist=['A','C','G','T']
 listGen={}
 tmpgen={}
 testinglist={}
@@ -25,7 +25,7 @@ def readInPut():
 def singStringGen(charlist,lens=int):
     temp=""
     for i in range (0,lens):
-        temp += charlist[random.randint(0,4)]
+        temp += charlist[random.randint(0,3)]
     #print (temp)
     #print (len(temp))
     return temp
